@@ -20,7 +20,6 @@ namespace Lab1
         private SqlDataReader reader;
         private string login;
         private string pass;
-        private string conStr;
 
         public Form1()
         {
