@@ -13,6 +13,7 @@ namespace Lab1
 {
     public partial class Form1 : Form
     {
+        SqlConnectionStringBuilder strBuilder;
         private SqlConnection conn;
         private SqlCommand comm;
         private DataTable table;
@@ -24,6 +25,9 @@ namespace Lab1
         public Form1()
         {
             InitializeComponent();
+            strBuilder = new SqlConnectionStringBuilder();
+            strBuilder.DataSource = "CYBER\\SQLEXPRESS";
+            strBuilder.InitialCatalog = "MyDB";
             while (connection()) { }
             button1.Enabled = false;
             textBox1.TextChanged += TextBox1_TextChanged;
@@ -43,8 +47,9 @@ namespace Lab1
             {
                 Form2 form2 = new Form2();
                 form2.ShowDialog(out login, out pass);
-                conStr = $"Data Source=CYBER\\SQLEXPRESS; Initial Catalog = MyDB; User ID={login}; Password={pass}";
-                conn = new SqlConnection(conStr);
+                strBuilder.UserID = login;
+                strBuilder.Password = pass;
+                conn = new SqlConnection(strBuilder.ConnectionString);
                 conn.Open();
                 conn.Close();
             }
@@ -69,6 +74,7 @@ namespace Lab1
         {
             try
             {
+                
                 conn.Open();
                 comm = new SqlCommand();
                 comm.Connection = conn;
