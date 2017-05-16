@@ -178,6 +178,7 @@ namespace DZ4
                     doc.Root.Add(new XElement("Product", new XAttribute("Product", ((ListViewItem)item).SubItems[3].Text)));
                     doc.Save($"{path}.xml");
                 }
+                listView1.Items.Clear();
             }
         }
     }
