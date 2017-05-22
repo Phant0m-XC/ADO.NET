@@ -15,13 +15,17 @@ namespace DZ6_3
         public Books()
         {
             Authors = new List<Authors>();
-            Person = new List<Person>();
+            Persons = new List<Persons>();
         }
         [Key]
         public int Id { get; set; }
         [Required]
+        [Column("Name", TypeName = "nvarchar")]
+        [MaxLength(100)]
         public string Name { get; set; }
+        [ForeignKey("TableAuthors")]
         public virtual ICollection<Authors> Authors { get; set; }
-        public virtual ICollection<Person> Person { get; set; }
+        [ForeignKey("TablePersons")]
+        public virtual ICollection<Persons> Persons { get; set; }
     }
 }

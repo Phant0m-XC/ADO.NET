@@ -9,10 +9,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DZ6_3
 {
-    [Table("TablePerson")]
-    public class Person
+    [Table("TablePersons")]
+    public class Persons
     {
-        public Person()
+        public Persons()
         {
             Books = new List<Books>();
         }
@@ -20,10 +20,15 @@ namespace DZ6_3
         [Key]
         public int Id { get; set; }
         [Required]
+        [Column("Name", TypeName = "nvarchar")]
+        [MaxLength(50)]
         public string Name { get; set; }
         [Required]
+        [Column("Surname", TypeName = "nvarchar")]
+        [MaxLength(50)]
         public string Surname { get; set; }
         public bool IsDeptor { get; set; }
+        [ForeignKey("TableBooks")]
         public virtual ICollection<Books> Books { get; set; }
     }
 }

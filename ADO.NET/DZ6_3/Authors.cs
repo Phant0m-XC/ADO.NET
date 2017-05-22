@@ -19,9 +19,14 @@ namespace DZ6_3
         [Key]
         public int Id { get; set; }
         [Required]
+        [Column("Name", TypeName ="nvarchar")]
+        [MaxLength(50)]
         public string Name { get; set; }
         [Required]
+        [Column("Surname", TypeName = "nvarchar")]
+        [MaxLength(50)]
         public string Surname { get; set; }
+        [ForeignKey("TableBooks")]
         public virtual ICollection<Books> Books { get; set; }
     }
 }

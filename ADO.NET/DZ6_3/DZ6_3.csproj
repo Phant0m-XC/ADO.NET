@@ -58,7 +58,7 @@
     <Compile Include="Authors.cs" />
     <Compile Include="Books.cs" />
     <Compile Include="LibraryEntity.cs" />
-    <Compile Include="Person.cs" />
+    <Compile Include="Persons.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
